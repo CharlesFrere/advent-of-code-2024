@@ -1,4 +1,5 @@
 import numpy as np
+from itertools import product
 
 with open("input.txt") as file:
     matrix = np.array([list(line.strip()) for line in file])
@@ -6,16 +7,7 @@ with open("input.txt") as file:
 rows, cols = matrix.shape
 word = "XMAS"
 
-directions = [
-    (0, 1),
-    (0, -1),
-    (1, 0),
-    (-1, 0),
-    (1, 1),
-    (1, -1),
-    (-1, 1),
-    (-1, -1)
-]
+directions = set(product((-1, 0, 1), (-1, 0, 1))) - {(0, 0)}
 
 
 def is_xmas(r, c, dr, dc):
